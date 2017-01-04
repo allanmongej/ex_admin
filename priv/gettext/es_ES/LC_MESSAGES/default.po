@@ -38,7 +38,7 @@ msgstr "Filtros"
 
 #: lib/ex_admin/view_helpers.ex:65
 msgid "New"
-msgstr "Nuevo"
+msgstr "Crear"
 
 #: lib/mix/tasks/admin.install.ex:202
 msgid "To add dashboard sections, checkout 'web/admin/dashboards.ex'"
@@ -99,11 +99,11 @@ msgstr "Eliminar seleccionados"
 
 #: web/controllers/admin_resource_controller.ex:90
 msgid "%{model_name} was successfully created."
-msgstr "%{model_name} a sido creado correctamente"
+msgstr "Creado correctamente."
 
 #: web/controllers/admin_association_controller.ex:57
 msgid "%{through_assoc} was successfully added."
-msgstr "%{through_assoc} ha sudo agregado/a"
+msgstr "Agregado correctamente"
 
 #: lib/ex_admin/utils.ex:279
 msgid "Are you sure you want to delete this?"
@@ -135,7 +135,7 @@ msgstr "Perfil"
 #: lib/ex_admin/themes/active_admin/form.ex:195
 #: lib/ex_admin/themes/admin_lte2/form.ex:196
 msgid "Remove"
-msgstr "Remove"
+msgstr "Eliminar"
 
 #: lib/ex_admin/themes/admin_lte2/filter.ex:43
 msgid "Search %{name_label}"
@@ -149,7 +149,7 @@ msgstr "Actualizar"
 #: lib/ex_admin/themes/active_admin/table.ex:21
 #: lib/ex_admin/themes/admin_lte2/table.ex:27
 msgid "%{resource_model} Details"
-msgstr "Detalles de %{resource_model}"
+msgstr "Detalles"
 
 #: lib/mix/tasks/admin.install.ex:200
 msgid "Dashboard"
@@ -165,7 +165,7 @@ msgstr "Mostrando "
 
 #: lib/ex_admin/paginate.ex:48
 msgid "Displaying %{name}"
-msgstr "Mostrando %{name}"
+msgstr "Mostrando"
 
 #: lib/ex_admin/filter.ex:11
 msgid "Equal To"
@@ -209,17 +209,17 @@ msgstr "‹ Anterior"
 
 #: lib/ex_admin/form/fields.ex:150
 msgid "Select %{nm}"
-msgstr "Select %{nm}"
+msgstr "Seleccionar"
 
 #: lib/ex_admin/themes/active_admin/index.ex:29
 #: lib/ex_admin/themes/admin_lte2/index.ex:28
 msgid "No %{label} found."
-msgstr "Ningún/a %{label} encontrado"
+msgstr "No se encontraron elementos"
 
 #: lib/ex_admin/themes/active_admin/index.ex:31
 #: lib/ex_admin/themes/admin_lte2/index.ex:30
 msgid "There are no %{label} yet. "
-msgstr "Aún no hay %{label}"
+msgstr "Aún no existen"
 
 #: lib/ex_admin/utils.ex:112
 msgid "a"
