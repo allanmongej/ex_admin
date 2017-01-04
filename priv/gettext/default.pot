@@ -263,3 +263,7 @@ msgstr ""
 #: web/templates/themes/admin_lte2/layout/header.html.eex:33
 msgid "Themes"
 msgstr ""
+
+#: lib/ex_admin/filter.ex:147
+msgid "selected"
+msgstr ""

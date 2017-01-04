@@ -144,7 +144,7 @@ defmodule ExAdmin.Filter do
   end
 
   def build_option(text, name, selected_name) do
-    selected = if name == selected_name, do: [selected: "selected"], else: []
+    selected = if name == selected_name, do: [selected: gettext "selected"], else: []
     option text, [value: name] ++ selected
   end
 end

@@ -319,7 +319,7 @@ defmodule ExAdmin do
     if action in actions do
       if ExAdmin.Utils.authorized_action?(conn, action, defn) do
         action_name = defn.action_labels[action] || humanize(action)
-        [action_link(conn, "#{action_name} #{name}", action, id)]
+        [action_link(conn, Gettext.gettext(ExAdmin.Gettext, "#{action_name}") <> " #{name}", action, id)]
       else
         []
       end
