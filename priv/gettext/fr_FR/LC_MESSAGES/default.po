@@ -48,14 +48,6 @@ msgstr "Bienvenue dans le Notificateur"
 msgid "invalid after_filter return:"
 msgstr "Retour de after_filter invalide :"
 
-#: web/controllers/admin_resource_controller.ex:134
-msgid "was successfully destroyed."
-msgstr "a bien été supprimé(e)."
-
-#: web/controllers/admin_resource_controller.ex:107
-msgid "was successfully updated."
-msgstr "a bien été mis(e) à jour."
-
 #: lib/ex_admin/themes/active_admin/index.ex:131
 #: lib/ex_admin/themes/admin_lte2/index.ex:125
 msgid "Are you sure you want to delete these %{name}? You wont be able to undo this."
@@ -88,10 +80,6 @@ msgstr "Voir"
 #: lib/ex_admin/themes/admin_lte2/index.ex:146
 msgid "Delete Selected"
 msgstr "Supprimer les éléments sélectionnés"
-
-#: web/controllers/admin_resource_controller.ex:90
-msgid "%{model_name} was successfully created."
-msgstr "%{model_name} a bien été créé(e)."
 
 #: web/controllers/admin_association_controller.ex:57
 msgid "%{through_assoc} was successfully added."
@@ -258,3 +246,17 @@ msgstr "Thèmes"
 #: lib/ex_admin/filter.ex:147
 msgid "selected"
 msgstr ""
+
+#: web/controllers/admin_resource_controller.ex:90
+msgid "%Successfully created."
+msgstr ""
+
+#, fuzzy
+#: web/controllers/admin_resource_controller.ex:107
+msgid "Successfully updated."
+msgstr "a bien été mis(e) à jour."
+
+#, fuzzy
+#: web/controllers/admin_resource_controller.ex:134
+msgid "Was successfully destroyed."
+msgstr "a bien été supprimé(e)."

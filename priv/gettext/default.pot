@@ -57,14 +57,6 @@ msgstr ""
 msgid "invalid after_filter return:"
 msgstr ""
 
-#: web/controllers/admin_resource_controller.ex:134
-msgid "was successfully destroyed."
-msgstr ""
-
-#: web/controllers/admin_resource_controller.ex:107
-msgid "was successfully updated."
-msgstr ""
-
 #: lib/ex_admin/themes/active_admin/index.ex:131
 #: lib/ex_admin/themes/admin_lte2/index.ex:125
 msgid "Are you sure you want to delete these %{name}? You wont be able to undo this."
@@ -96,10 +88,6 @@ msgstr ""
 #: lib/ex_admin/themes/active_admin/index.ex:152
 #: lib/ex_admin/themes/admin_lte2/index.ex:146
 msgid "Delete Selected"
-msgstr ""
-
-#: web/controllers/admin_resource_controller.ex:90
-msgid "%{model_name} was successfully created."
 msgstr ""
 
 #: web/controllers/admin_association_controller.ex:57
@@ -266,4 +254,16 @@ msgstr ""
 
 #: lib/ex_admin/filter.ex:147
 msgid "selected"
+msgstr ""
+
+#: web/controllers/admin_resource_controller.ex:90
+msgid "%Successfully created."
+msgstr ""
+
+#: web/controllers/admin_resource_controller.ex:107
+msgid "Successfully updated."
+msgstr ""
+
+#: web/controllers/admin_resource_controller.ex:134
+msgid "Was successfully destroyed."
 msgstr ""
