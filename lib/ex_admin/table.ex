@@ -33,13 +33,13 @@ defmodule ExAdmin.Table do
                   for {k,v} <- Map.get(resource, f_name) do
                     tr do
                       field_header "#{f_name} #{k}"
-                      td ".td-#{parameterize k} #{v}"
+                      td ".td-#{parameterize(fix_name(k))} #{v}"
                     end
                   end
                 contents, f_name ->
                   tr do
                     field_header field_name
-                    handle_contents(contents, f_name)
+                    handle_contents(contents, fix_name(f_name))
                   end
               end)
             end
@@ -213,5 +213,21 @@ defmodule ExAdmin.Table do
   def handle_contents(contents, field_name) do
     td(to_class(".td-", field_name), contents)
   end
+
+    defp fix_name(name) when is_bitstring(name) do
+      name
+      |> String.replace("á", "a")
+      |> String.replace("é", "e")
+      |> String.replace("í", "i")
+      |> String.replace("ó", "o")
+      |> String.replace("ú", "u")
+      |> String.replace("Á", "A")
+      |> String.replace("É", "E")
+      |> String.replace("Í", "I")
+      |> String.replace("Ó", "O")
+      |> String.replace("Ú", "U")
+    end
+
+    defp fix_name(name), do: name
 
 end
