@@ -67,7 +67,7 @@ msgstr "Actualizado correctamente."
 #: lib/ex_admin/themes/active_admin/index.ex:131
 #: lib/ex_admin/themes/admin_lte2/index.ex:125
 msgid "Are you sure you want to delete these %{name}? You wont be able to undo this."
-msgstr "¿Estás seguro de eliminar %{name}? No podrás deshacer esto."
+msgstr "¿Estás seguro que deseas eliminarlo? No podrás deshacer esto."
 
 #: lib/ex_admin/themes/admin_lte2/filter.ex:27
 msgid "Clear Filters"
@@ -193,7 +193,7 @@ msgstr "Todos %{total}"
 
 #: lib/ex_admin/paginate.ex:42 lib/ex_admin/paginate.ex:52
 msgid "in total"
-msgstr "de un total"
+msgstr "en total"
 
 #: lib/ex_admin/paginate.ex:40 lib/ex_admin/paginate.ex:50
 msgid "of"
