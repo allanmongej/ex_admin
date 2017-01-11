@@ -87,7 +87,7 @@ defmodule ExAdmin.AdminResourceController do
         conn |> handle_changeset_error(defn, changeset, params)
       resource ->
         {conn, _, resource} = handle_after_filter(conn, :create, defn, params, resource)
-        put_flash(conn, :notice, (gettext "%{model_name} was successfully created.", model_name: (model |> base_name |> titleize) ))
+        put_flash(conn, :notice, (gettext "%Successfully created.", model_name: (model |> base_name |> titleize) ))
         |> redirect(to: admin_resource_path(resource, :show))
     end
   end
@@ -104,7 +104,7 @@ defmodule ExAdmin.AdminResourceController do
         conn |> handle_changeset_error(defn, changeset, params)
       resource ->
         {conn, _, resource} = handle_after_filter(conn, :update, defn, params, resource)
-        put_flash(conn, :notice, "#{model |> base_name |> titleize} " <> (gettext "was successfully updated."))
+        put_flash(conn, :notice, (gettext "Successfully updated."))
         |> redirect(to: admin_resource_path(resource, :show))
     end
   end
@@ -131,7 +131,7 @@ defmodule ExAdmin.AdminResourceController do
     if conn.assigns.xhr do
       render conn, "destroy.js", tr_id: String.downcase("#{model_name}_#{params[:id]}")
     else
-      put_flash(conn, :notice, "#{model_name} " <> (gettext "was successfully destroyed."))
+      put_flash(conn, :notice, (gettext "Was successfully destroyed."))
       |> redirect(to: admin_resource_path(defn.resource_model, :index))
     end
   end
