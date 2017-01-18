@@ -115,9 +115,20 @@ defmodule ExAdmin.Utils do
 
   def parameterize(atom) when is_atom(atom),
     do: Atom.to_string(atom) |> parameterize
-  def parameterize(str) when is_binary(str),
-    do: Inflex.parameterize(str, "_")
-    # do: str
+  def parameterize(str) when is_binary(str) do
+    str
+    |> Inflex.parameterize("_")
+    |> String.replace("á", "a")
+    |> String.replace("é", "e")
+    |> String.replace("í", "i")
+    |> String.replace("ó", "o")
+    |> String.replace("ú", "u")
+    |> String.replace("Á", "A")
+    |> String.replace("É", "E")
+    |> String.replace("Í", "I")
+    |> String.replace("Ó", "O")
+    |> String.replace("Ú", "U")
+  end
   def parameterize(tuple) when is_tuple(tuple) do
     Tuple.to_list(tuple)
     |> Enum.map(&Kernel.to_string/1)
