@@ -32,13 +32,13 @@ defmodule ExAdmin.Table do
                 _contents, {:map, f_name} ->
                   for {k,v} <- Map.get(resource, f_name) do
                     tr do
-                      field_header "#{f_name} #{k}"
+                      field_header "#{fix_name(f_name)} #{fix_name(k)}"
                       td ".td-#{parameterize(fix_name(k))} #{v}"
                     end
                   end
                 contents, f_name ->
                   tr do
-                    field_header field_name
+                    field_header fix_name(field_name)
                     handle_contents(contents, fix_name(f_name))
                   end
               end)

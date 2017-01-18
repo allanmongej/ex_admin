@@ -98,7 +98,7 @@ defmodule ExAdmin.Theme.AdminLte2.Form do
     display_name = ExAdmin.Utils.displayable_name_singular conn
     label = if mode == :new, do: (gettext "Create"), else: (gettext "Update")
     div ".box-footer" do
-      Xain.input ".btn.btn-primary", name: "commit", type: :submit, value: escape_value("#{label} #{humanize display_name}")
+      Xain.input ".btn.btn-primary", name: "commit", type: :submit, value: escape_value("#{label}")
       a(".btn.btn-default.btn-cancel " <> (gettext "Cancel"), href: admin_resource_path(conn, :index))
     end
   end

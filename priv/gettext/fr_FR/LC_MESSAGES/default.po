@@ -247,16 +247,16 @@ msgstr "Thèmes"
 msgid "selected"
 msgstr ""
 
-#: web/controllers/admin_resource_controller.ex:90
-msgid "%Successfully created."
-msgstr ""
-
-#, fuzzy
 #: web/controllers/admin_resource_controller.ex:107
 msgid "Successfully updated."
 msgstr "a bien été mis(e) à jour."
 
 #, fuzzy
+#: web/controllers/admin_resource_controller.ex:90
+msgid "Successfully created."
+msgstr ""
+
+#, fuzzy
 #: web/controllers/admin_resource_controller.ex:134
-msgid "Was successfully destroyed."
+msgid "Successfully destroyed."
 msgstr "a bien été supprimé(e)."
