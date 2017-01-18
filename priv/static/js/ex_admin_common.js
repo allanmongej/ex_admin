@@ -160,7 +160,8 @@ $(document).ready(function(){
     $(document).on('focus', '.datepicker:not(.hasDatepicker)', function() {
       var defaults, options;
       defaults = {
-        dateFormat: 'yy-mm-dd'
+        dateFormat: 'dd-mm-yy',
+        language: 'es'
       };
       options = $(this).data('datepicker-options');
       return $(this).datepicker($.extend(defaults, options));
@@ -6677,7 +6678,7 @@ S2.define('select2/defaults',[
 
     if ($.isArray(options.language)) {
       var languages = new Translation();
-      options.language.push('en');
+      options.language.push('es');
 
       var languageNames = options.language;
 
@@ -7029,7 +7030,7 @@ S2.define('select2/core',[
     // Hide the original select
     $element.addClass('select2-hidden-accessible');
 	$element.attr('aria-hidden', 'true');
-	
+
     // Synchronize any monitored attributes
     this._syncAttributes();
 

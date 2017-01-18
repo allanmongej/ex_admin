@@ -46,7 +46,6 @@ defmodule ExAdmin.ViewHelpers do
 
   def page_title(conn, resource) do
     plural = displayable_name_plural conn
-    singular = Inflex.singularize plural
     case ExAdmin.Utils.action_name(conn) do
       :index ->
         plural

@@ -148,7 +148,7 @@ defmodule ExAdmin do
   require Logger
   use Xain
   alias ExAdmin.Utils
-  import ExAdmin.Utils, only: [titleize: 1, humanize: 1, admin_resource_path: 2]
+  import ExAdmin.Utils, only: [humanize: 1, admin_resource_path: 2]
   require ExAdmin.Register
 
   Code.ensure_compiled ExAdmin.Register
@@ -271,7 +271,7 @@ defmodule ExAdmin do
 
   @doc false
   def default_resource_title_actions(%Plug.Conn{params: params} = conn, %{resource_model: resource_model} = defn) do
-    singular = ExAdmin.Utils.displayable_name_singular(conn) |> titleize
+    singular = ""
     actions = defn.actions
     case Utils.action_name(conn) do
       :show ->

@@ -43,28 +43,28 @@ defmodule ExAdminTest do
   test "default_resource_title_actions", %{defn: defn, conn: conn} do
     conn = struct(conn, private: %{phoenix_action: :show})
     result = ExAdmin.default_resource_title_actions(conn, defn)
-    assert result ==  [edit: [{"Edit Simple", [href: "/admin/simples/1/edit"]}], new: [{"New Simple", [href: "/admin/simples/new"]}], delete: [{"Delete Simple", [href: "/admin/simples/1", "data-confirm": "Are you sure you want to delete this?", "data-method": :delete, rel: :nofollow]}]]
+    assert result ==  [edit: [{"Edit ", [href: "/admin/simples/1/edit"]}], new: [{"New ", [href: "/admin/simples/new"]}], delete: [{"Delete ", [href: "/admin/simples/1", "data-confirm": "Are you sure you want to delete this?", "data-method": :delete, rel: :nofollow]}]]
 
     conn = struct(conn, private: %{phoenix_action: :index})
     result = ExAdmin.default_resource_title_actions(conn, defn)
 
-    assert result == [new: [{"New Simple", [href: "/admin/simples/new"]}]]
+    assert result == [new: [{"New ", [href: "/admin/simples/new"]}]]
     conn = struct(conn, private: %{phoenix_action: :edit})
 
     result = ExAdmin.default_resource_title_actions(conn, defn)
-    assert result == [new: [{"New Simple", [href: "/admin/simples/new"]}]]
+    assert result == [new: [{"New ", [href: "/admin/simples/new"]}]]
   end
 
   @tag as_resource: %TestExAdmin.ExAdmin.SimpleCustom{}
   test "default_resource_title_actions custom actions", %{defn: defn, conn: conn} do
     conn = struct(conn, private: %{phoenix_action: :index})
     result = ExAdmin.default_resource_title_actions(conn, defn)
-    assert result ==  [new: [{"New Simple", [href: "/admin/simples/new"]}], custom: [{"Custom Action", [href: "/custom"]}]]
+    assert result ==  [new: [{"New ", [href: "/admin/simples/new"]}], custom: [{"Custom Action", [href: "/custom"]}]]
 
     conn = struct(conn, private: %{phoenix_action: :show})
     result = ExAdmin.default_resource_title_actions(conn, defn)
-    assert result ==  [edit: [{"Edit Simple", [href: "/admin/simples/1/edit"]}], new: [{"New Simple", [href: "/admin/simples/new"]}],
-            delete: [{"Delete Simple",
+    assert result ==  [edit: [{"Edit ", [href: "/admin/simples/1/edit"]}], new: [{"New ", [href: "/admin/simples/new"]}],
+            delete: [{"Delete ",
               [href: "/admin/simples/1", "data-confirm": "Are you sure you want to delete this?", "data-method": :delete, rel: :nofollow]}],
             custom: [{"Custom Show", [href: "/custom/1"]}]]
 
