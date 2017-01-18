@@ -398,8 +398,20 @@ defmodule ExAdmin.Helpers do
 
   def to_class({_, field_name}), do: to_class(field_name)
 
-  def to_class(field_name) when is_binary(field_name),
-    do: Inflex.parameterize(field_name, "_")
+  def to_class(field_name) when is_binary(field_name) do
+    field_name
+    |> Inflex.parameterize("_")
+    |> String.replace("á", "a")
+    |> String.replace("é", "e")
+    |> String.replace("í", "i")
+    |> String.replace("ó", "o")
+    |> String.replace("ú", "u")
+    |> String.replace("Á", "A")
+    |> String.replace("É", "E")
+    |> String.replace("Í", "I")
+    |> String.replace("Ó", "O")
+    |> String.replace("Ú", "U")
+  end
   def to_class(field_name) when is_atom(field_name),
     do: Atom.to_string(field_name)
 
