@@ -43,25 +43,25 @@ defmodule ExAdminTest.ControllerTest do
 
   test "shows new product page" do
     conn = get build_conn(), admin_resource_path(Product, :new), []
-    assert html_response(conn, 200) =~ "New Product"
+    assert html_response(conn, 200) =~ "New"
   end
 
   @invalid_attrs %{}
   test "does not create resource and renders errors when data is invalid" do
     conn = post build_conn(), admin_resource_path(Product, :create), product: @invalid_attrs
-    assert html_response(conn, 200) =~ "New Product"
+    assert html_response(conn, 200) =~ "New"
     assert String.contains?(conn.resp_body, "can't be blank")
   end
 
   test "does not create resource and sets changeset" do
     conn = post build_conn(), admin_resource_path(Product, :create), product: @invalid_attrs
-    assert html_response(conn, 200) =~ "New Product"
+    assert html_response(conn, 200) =~ "New"
     assert conn.assigns[:changeset].changes == %{}
   end
 
   test "does not create resource and required fields" do
     conn = post build_conn(), admin_resource_path(Product, :create), product: @invalid_attrs
-    assert html_response(conn, 200) =~ "New Product"
+    assert html_response(conn, 200) =~ "New"
 
     refute Floki.find(conn.resp_body, "#product_title_input abbr") == []
   end
@@ -138,7 +138,7 @@ defmodule ExAdminTest.ControllerTest do
 
   test "new form" do
     conn = get build_conn(), admin_resource_path(Simple, :new), %{}
-    assert html_response(conn, 200) =~ ~r/New Simple/
+    assert html_response(conn, 200) =~ ~r/New/
     refute Floki.find(conn.resp_body, "input#simple_name") == []
   end
 

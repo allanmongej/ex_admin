@@ -271,7 +271,7 @@ defmodule ExAdmin do
 
   @doc false
   def default_resource_title_actions(%Plug.Conn{params: params} = conn, %{resource_model: resource_model} = defn) do
-    singular = ExAdmin.Utils.displayable_name_singular(conn) |> titleize
+    singular = ""
     actions = defn.actions
     case Utils.action_name(conn) do
       :show ->
