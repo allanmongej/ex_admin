@@ -130,7 +130,7 @@ defmodule ExAdmin.Theme.AdminLte2.Filter do
       title = name_label |> String.replace(" Id", "")
       label ".label #{title}", for: "q_#{owner_key}"
       select "##{id}.form-control", [name: "q[#{owner_key}_eq]"] do
-        option "Any", value: ""
+        option gettext("Any"), value: ""
         for r <- resources do
           id = ExAdmin.Schema.get_id(r)
           name = ExAdmin.Helpers.display_name(r)
@@ -170,7 +170,7 @@ defmodule ExAdmin.Theme.AdminLte2.Filter do
     div ".form-group" do
       label ".label #{name_label}", for: "q_#{name}"
       select "##{name}", [name: "q[#{name}_eq]", class: "form-control"] do
-        option "Any", value: ""
+        option gettext("Any"), value: ""
         for id <- ids do
           selected = if "#{id}" == selected_key, do: [selected: :selected], else: []
           option id, [{:value, "#{id}"} | selected]

@@ -19,7 +19,7 @@ msgid "Create one"
 msgstr "Создать"
 
 #: lib/ex_admin/themes/active_admin/index.ex:116
-#: lib/ex_admin/themes/admin_lte2/index.ex:110 lib/ex_admin/view_helpers.ex:63
+#: lib/ex_admin/themes/admin_lte2/index.ex:110 lib/ex_admin/view_helpers.ex:62
 msgid "Edit"
 msgstr "Изменить"
 
@@ -28,7 +28,7 @@ msgstr "Изменить"
 msgid "Filters"
 msgstr "Фильтры"
 
-#: lib/ex_admin/view_helpers.ex:65
+#: lib/ex_admin/view_helpers.ex:64
 msgid "New"
 msgstr "Добавить"
 
@@ -60,8 +60,8 @@ msgstr "Очистить фильтры"
 #: lib/ex_admin/themes/active_admin/form.ex:239
 #: lib/ex_admin/themes/active_admin/form.ex:286
 #: lib/ex_admin/themes/active_admin/index.ex:119
-#: lib/ex_admin/themes/admin_lte2/form.ex:246
-#: lib/ex_admin/themes/admin_lte2/form.ex:297
+#: lib/ex_admin/themes/admin_lte2/form.ex:245
+#: lib/ex_admin/themes/admin_lte2/form.ex:296
 #: lib/ex_admin/themes/admin_lte2/index.ex:113
 msgid "Delete"
 msgstr "Удалить"
@@ -85,17 +85,17 @@ msgstr "Удалить выбранное"
 msgid "%{through_assoc} was successfully added."
 msgstr "%{through_assoc} была успешно добавлена."
 
-#: lib/ex_admin/utils.ex:279
+#: lib/ex_admin/utils.ex:290
 msgid "Are you sure you want to delete this?"
 msgstr "Вы точно хотите удалить это?"
 
 #: lib/ex_admin/themes/active_admin/form.ex:110
-#: lib/ex_admin/themes/admin_lte2/form.ex:102
+#: lib/ex_admin/themes/admin_lte2/form.ex:101
 msgid "Cancel"
 msgstr "Отмена"
 
 #: lib/ex_admin/themes/active_admin/form.ex:103
-#: lib/ex_admin/themes/admin_lte2/form.ex:99
+#: lib/ex_admin/themes/admin_lte2/form.ex:98
 msgid "Create"
 msgstr "Создать"
 
@@ -113,7 +113,7 @@ msgid "Profile"
 msgstr "Профиль"
 
 #: lib/ex_admin/themes/active_admin/form.ex:195
-#: lib/ex_admin/themes/admin_lte2/form.ex:196
+#: lib/ex_admin/themes/admin_lte2/form.ex:195
 msgid "Remove"
 msgstr "Удалить"
 
@@ -122,7 +122,7 @@ msgid "Search %{name_label}"
 msgstr "Найти %{name_label}"
 
 #: lib/ex_admin/themes/active_admin/form.ex:103
-#: lib/ex_admin/themes/admin_lte2/form.ex:99
+#: lib/ex_admin/themes/admin_lte2/form.ex:98
 msgid "Update"
 msgstr "Обновить"
 
@@ -251,12 +251,17 @@ msgstr ""
 msgid "Successfully updated."
 msgstr "была успешно обновлена."
 
-#, fuzzy
 #: web/controllers/admin_resource_controller.ex:90
 msgid "Successfully created."
 msgstr ""
 
-#, fuzzy
 #: web/controllers/admin_resource_controller.ex:134
 msgid "Successfully destroyed."
 msgstr "была успешно удалена."
+
+#: lib/ex_admin/themes/active_admin/filter.ex:93
+#: lib/ex_admin/themes/active_admin/filter.ex:134
+#: lib/ex_admin/themes/admin_lte2/filter.ex:133
+#: lib/ex_admin/themes/admin_lte2/filter.ex:173
+msgid "Any"
+msgstr ""
