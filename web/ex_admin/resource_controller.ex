@@ -37,12 +37,36 @@ defmodule ExAdmin.ResourceController do
       end
 
       defp handle_changeset_error(conn, defn, changeset, params) do
-        conn = put_flash(conn, :inline_error, changeset.errors)
+        conn = put_flash(conn, :inline_error, Ecto.Changeset.traverse_errors(changeset, &translate_error/1))
         |> Plug.Conn.assign(:changeset, changeset)
         |> Plug.Conn.assign(:ea_required, changeset.required)
         contents = do_form_view(conn, ExAdmin.Changeset.get_data(changeset), params)
         render(conn, "admin.html", html: contents, filters: nil)
       end
+
+        @doc """
+        Translates an error message using gettext.
+        """
+        def translate_error({msg, opts}) do
+          # Because error messages were defined within Ecto, we must
+          # call the Gettext module passing our Gettext backend. We
+          # also use the "errors" domain as translations are placed
+          # in the errors.po file.
+          # Ecto will pass the :count keyword if the error message is
+          # meant to be pluralized.
+          # On your own code and templates, depending on whether you
+          # need the message to be pluralized or not, this could be
+          # written simply as:
+          #
+          #     dngettext "errors", "1 file", "%{count} files", count
+          #     dgettext "errors", "is invalid"
+          #
+          if count = opts[:count] do
+            Gettext.dngettext(ExAdmin.Gettext, "errors", msg, msg, count, opts)
+          else
+            Gettext.dgettext(ExAdmin.Gettext, "errors", msg, opts)
+          end
+        end
 
       defp render_403(conn) do
         conn
