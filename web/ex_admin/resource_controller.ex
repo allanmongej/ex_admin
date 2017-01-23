@@ -37,7 +37,7 @@ defmodule ExAdmin.ResourceController do
       end
 
       defp handle_changeset_error(conn, defn, changeset, params) do
-        conn = put_flash(conn, :inline_error, Ecto.Changeset.traverse_errors(changeset, &translate_error/1))
+        conn = put_flash(conn, :inline_error, changeset|> Ecto.Changeset.traverse_errors(&translate_error/1) |> fix_inline_errors)
         |> Plug.Conn.assign(:changeset, changeset)
         |> Plug.Conn.assign(:ea_required, changeset.required)
         contents = do_form_view(conn, ExAdmin.Changeset.get_data(changeset), params)
@@ -66,6 +66,16 @@ defmodule ExAdmin.ResourceController do
           else
             Gettext.dgettext(ExAdmin.Gettext, "errors", msg, opts)
           end
+        end
+
+        def fix_inline_errors(errors) when is_map(errors) do
+          errors
+          |> Enum.map(fn{k, v} -> {k, fix_inline_errors(v)} end)
+          |> Enum.into(%{})
+        end
+
+        def fix_inline_errors(errors) when is_list(errors) do
+          Enum.join(errors, ", ")
         end
 
       defp render_403(conn) do
