@@ -1,0 +1,3 @@
+<% if @message != nil do %>
+  alert(<%= @message %>);
+<% end %>

@@ -122,24 +122,42 @@ defmodule ExAdmin.Theme.AdminLte2.Filter do
     name_label = field_label(name, defn)
     repo = Application.get_env :ex_admin, :repo
     resources = repo.all assoc
-    selected_key = case q["#{owner_key}_eq"] do
-      nil -> nil
-      val -> val
-    end
-    div ".form-group" do
-      title = name_label |> String.replace(" Id", "")
-      label ".label #{title}", for: "q_#{owner_key}"
-      select "##{id}.form-control", [name: "q[#{owner_key}_eq]"] do
-        option gettext("Any"), value: ""
-        for r <- resources do
-          id = ExAdmin.Schema.get_id(r)
-          name = ExAdmin.Helpers.display_name(r)
-          selected = if "#{id}" == selected_key, do: [selected: :selected], else: []
-          option name, [{:value, "#{id}"} | selected]
+
+    except = Enum.at(defn.index_filters, 0)[:except] || []
+    only   = Enum.at(defn.index_filters, 0)[:only] || []
+    if (only == [] && module_to_atom(assoc) in except == false) || (only != [] && module_to_atom(assoc) in only) do
+      selected_key = case q["#{owner_key}_eq"] do
+        nil -> nil
+        val -> val
+      end
+
+      div ".form-group" do
+        title = name_label |> String.replace(" Id", "")
+        label ".label #{title}", for: "q_#{owner_key}"
+        select "##{id}.form-control", [name: "q[#{owner_key}_eq]"] do
+          option gettext("Any"), value: ""
+          for r <- resources do
+            id = ExAdmin.Schema.get_id(r)
+            name = ExAdmin.Helpers.display_name(r)
+            selected = if "#{id}" == selected_key, do: [selected: :selected], else: []
+            option name, [{:value, "#{id}"} | selected]
+          end
         end
       end
     end
   end
+
+  def module_to_atom([]), do: []
+  def module_to_atom(mod) do
+    mod
+    |> Atom.to_string
+    |> Macro.underscore
+    |> String.downcase
+    |> String.split("/")
+    |> Enum.at(2)
+    |> String.to_atom
+  end
+
 
   def build_field({name, :boolean}, q, defn) do
     name_label = field_label(name, defn)

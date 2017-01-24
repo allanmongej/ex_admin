@@ -132,7 +132,7 @@ defmodule ExAdmin.AdminResourceController do
       end
     case deleted do
       true ->
-        model_name = model |> base_name |> titleize
+        model_name = model |> base_name |> titleize |> String.replace(" ", "")
 
         {conn, _, _resource} = handle_after_filter(conn, :destroy, defn, params, resource)
         if conn.assigns.xhr do
@@ -142,10 +142,10 @@ defmodule ExAdmin.AdminResourceController do
           |> redirect(to: admin_resource_path(defn.resource_model, :index))
         end
       false ->
-        {conn, _, resource} = handle_after_filter(conn, :create, defn, params, resource)
-        conn
-        |> put_flash(:error, (gettext "Can't delete it because it is required by other elements."))
+        {conn, _, resource} = handle_after_filter(conn, :destroy, defn, params, resource)
+        put_flash(conn, :notice, (gettext "Successfully destroyed."))
         |> redirect(to: admin_resource_path(defn.resource_model, :index))
+        render conn, "reload.js", message: gettext("Can't delete it because it is required by other elements.")
     end
   end
 
