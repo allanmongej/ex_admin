@@ -804,10 +804,10 @@ defmodule ExAdmin.Form do
   end
 
   def build_item(conn, %{type: :has_many, resource: _resource, name: field_name,
-      opts: %{fun: fun}}, resource, model_name, errors) do
+      opts: %{fun: fun}} = opts, resource, model_name, errors) do
     Adminlog.debug "build_item 8: #{inspect field_name}"
     field_field_name = "#{field_name}_attributes"
-    human_label = "#{humanize(field_name) |> Inflex.singularize}"
+    human_label = Map.get(opts[:opts], :label, "#{humanize(field_name) |> Inflex.singularize}")
     new_record_name_var = new_record_name field_name
     div ".has_many.#{field_name}" do
       {contents, html} = theme_module(conn, Form).build_inputs_has_many field_name,
@@ -857,7 +857,7 @@ defmodule ExAdmin.Form do
     assoc_ids = Enum.map(get_resource_field2(resource, name), &(Schema.get_id(&1)))
     name_str = "#{model_name}[#{name_ids}][]"
     required = get_required name, opts
-    theme_module(conn, Form).build_inputs_collection model_name, name, name_ids, required, fn ->
+    theme_module(conn, Form).build_inputs_collection model_name, Map.get(opts, :label, name), name_ids, required, fn ->
       markup do
         Xain.input name: name_str, type: "hidden", value: ""
         if opts[:as] == :check_boxes do

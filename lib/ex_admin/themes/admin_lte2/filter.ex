@@ -147,18 +147,6 @@ defmodule ExAdmin.Theme.AdminLte2.Filter do
     end
   end
 
-  def module_to_atom([]), do: []
-  def module_to_atom(mod) do
-    mod
-    |> Atom.to_string
-    |> Macro.underscore
-    |> String.downcase
-    |> String.split("/")
-    |> Enum.at(2)
-    |> String.to_atom
-  end
-
-
   def build_field({name, :boolean}, q, defn) do
     name_label = field_label(name, defn)
     name_field = "#{name}_eq"
@@ -200,6 +188,17 @@ defmodule ExAdmin.Theme.AdminLte2.Filter do
   def build_field({name, type}, _q, _) do
     Logger.debug "ExAdmin.Filter: unknown type: #{inspect type} for field: #{inspect name}"
     nil
+  end
+
+  def module_to_atom([]), do: []
+  def module_to_atom(mod) do
+    mod
+    |> Atom.to_string
+    |> Macro.underscore
+    |> String.downcase
+    |> String.split("/")
+    |> Enum.at(2)
+    |> String.to_atom
   end
 
 end

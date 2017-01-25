@@ -128,7 +128,7 @@ defmodule ExAdmin.AdminResourceController do
         ExAdmin.Repo.delete(resource, params[defn.resource_name])
         true
       rescue
-        e in Postgrex.Error -> false
+        _e in Postgrex.Error -> false
       end
     case deleted do
       true ->
@@ -142,7 +142,7 @@ defmodule ExAdmin.AdminResourceController do
           |> redirect(to: admin_resource_path(defn.resource_model, :index))
         end
       false ->
-        {conn, _, resource} = handle_after_filter(conn, :destroy, defn, params, resource)
+        {conn, _, _resource} = handle_after_filter(conn, :destroy, defn, params, resource)
         put_flash(conn, :notice, (gettext "Successfully destroyed."))
         |> redirect(to: admin_resource_path(defn.resource_model, :index))
         render conn, "reload.js", message: gettext("Can't delete it because it is required by other elements.")
