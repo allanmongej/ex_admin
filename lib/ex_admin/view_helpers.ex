@@ -50,13 +50,25 @@ defmodule ExAdmin.ViewHelpers do
       :index ->
         plural
       :show ->
-        cond do
-          function_exported?(ExAdmin.get_registered(resource.__struct__).__struct__, :display_name, 1) ->
-            apply(ExAdmin.get_registered(resource.__struct__).__struct__, :display_name, [resource])
-          function_exported?(resource.__struct__, :display_name, 1) ->
-            apply(resource.__struct__, :display_name, [resource])
-          true ->
-            ExAdmin.Helpers.resource_identity(resource)
+        case ExAdmin.get_registered(resource.__struct__) do
+          nil ->
+            cond do
+              function_exported?(ExAdmin.get_registered(resource.__struct__).__struct__, :display_name, 1) ->
+                apply(ExAdmin.get_registered(resource.__struct__).__struct__, :display_name, [resource])
+              function_exported?(resource.__struct__, :display_name, 1) ->
+                apply(resource.__struct__, :display_name, [resource])
+              true ->
+                ExAdmin.Helpers.resource_identity(resource)
+            end
+          ex_admin_resource ->
+            ex_admin_resource.menu[:singular_label] || cond do
+              function_exported?(ExAdmin.get_registered(resource.__struct__).__struct__, :display_name, 1) ->
+                apply(ExAdmin.get_registered(resource.__struct__).__struct__, :display_name, [resource])
+              function_exported?(resource.__struct__, :display_name, 1) ->
+                apply(resource.__struct__, :display_name, [resource])
+              true ->
+                ExAdmin.Helpers.resource_identity(resource)
+            end
         end
       action when action in [:edit, :update] ->
         (gettext "Edit")
