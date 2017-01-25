@@ -1,0 +1,1 @@
+$($(".box")[0]).before('<div class="alert alert-' + '<%= @type %>' + ' alert-dismissable"><button class="close" data-dismiss="alert" aria-hidden="true">x</button>' + '<%= @message %>' + '</div>');
