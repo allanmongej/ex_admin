@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Language: INSERT LANGUAGE HERE\n"
 
-#: web/controllers/admin_resource_controller.ex:156
+#: web/controllers/admin_resource_controller.ex:171
 msgid "was successfully destroyed."
 msgid_plural "were successfully destroyed."
 msgstr[0] ""
@@ -264,13 +264,18 @@ msgstr ""
 msgid "Successfully created."
 msgstr ""
 
-#: web/controllers/admin_resource_controller.ex:134
+#: web/controllers/admin_resource_controller.ex:141
 msgid "Successfully destroyed."
 msgstr ""
 
 #: lib/ex_admin/themes/active_admin/filter.ex:93
 #: lib/ex_admin/themes/active_admin/filter.ex:134
-#: lib/ex_admin/themes/admin_lte2/filter.ex:133
-#: lib/ex_admin/themes/admin_lte2/filter.ex:173
+#: lib/ex_admin/themes/admin_lte2/filter.ex:138
+#: lib/ex_admin/themes/admin_lte2/filter.ex:179
 msgid "Any"
+msgstr ""
+
+#: web/controllers/admin_resource_controller.ex:146
+#: web/controllers/admin_resource_controller.ex:148
+msgid "Cannot delete this resource as it is associated to other elementes."
 msgstr ""

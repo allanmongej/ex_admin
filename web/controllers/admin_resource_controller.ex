@@ -121,20 +121,20 @@ defmodule ExAdmin.AdminResourceController do
   end
 
   def destroy(conn, defn, params) do
-    model = defn.__struct__
-    resource = conn.assigns.resource
     deleted =
       try do
-        ExAdmin.Repo.delete(resource, params[defn.resource_name])
+        ExAdmin.Repo.delete(conn.assigns.resource, params[defn.resource_name])
         true
       rescue
-        _e in Postgrex.Error -> false
+        e -> false
       end
+
+    {conn, _, resource} = handle_after_filter(conn, :destroy, defn, params, conn.assigns.resource)
+
     case deleted do
       true ->
-        model_name = model |> base_name |> titleize |> String.replace(" ", "")
+        model_name = defn.__struct__ |> base_name |> titleize |> String.replace(" ", "")
 
-        {conn, _, _resource} = handle_after_filter(conn, :destroy, defn, params, resource)
         if conn.assigns.xhr do
           render conn, "destroy.js", tr_id: String.downcase("#{model_name}_#{params[:id]}")
         else
@@ -142,10 +142,12 @@ defmodule ExAdmin.AdminResourceController do
           |> redirect(to: admin_resource_path(defn.resource_model, :index))
         end
       false ->
-        {conn, _, _resource} = handle_after_filter(conn, :destroy, defn, params, resource)
-        put_flash(conn, :notice, (gettext "Successfully destroyed."))
-        |> redirect(to: admin_resource_path(defn.resource_model, :index))
-        render conn, "reload.js", message: gettext("Can't delete it because it is required by other elements.")
+        if conn.assigns.xhr do
+          render conn, "flash_message.js", type: "error", message: gettext("Cannot delete this resource as it is associated to other elementes.")
+        else
+          put_flash(conn, :error, gettext("Cannot delete this resource as it is associated to other elementes."))
+          |> redirect(to: admin_resource_path(resource, :show))
+        end
     end
   end
 
